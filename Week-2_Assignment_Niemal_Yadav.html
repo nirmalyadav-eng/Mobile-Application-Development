@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .example-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #4b6cb7;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .code-container {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Consolas', monospace;
+            overflow-x: auto;
+        }
+        
+        .output {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: 'Consolas', monospace;
+            min-height: 70px;
+        }
+        
+        .btn {
+            background: #4b6cb7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #3a5999;
+        }
+        
+        .explanation {
+            margin-top: 15px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Fundamentals</h1>
+            <p class="subtitle">A practical demonstration of variables, operators, and control statements</p>
+        </header>
+        
+        <div class="content">
+            <div class="example-box">
+                <h2>Variables</h2>
+                <div class="code-container">
+// Declaring variables<br>
+var message = "Hello, World!";<br>
+let count = 5;<br>
+const MAX_VALUE = 100;<br>
+<br>
+// Outputting variables<br>
+console.log(message);<br>
+console.log("Count: " + count);<br>
+console.log("Max value: " + MAX_VALUE);
+                </div>
+                <button class="btn" onclick="runVariables()">Run Example</button>
+                <div class="output" id="variables-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>Variables are containers for storing data values. In JavaScript, we can use <code>var</code>, <code>let</code>, or <code>const</code> to declare variables.</p>
+                    <p><code>const</code> is used for values that won't change, <code>let</code> for variables that may be reassigned, and <code>var</code> is the older way to declare variables.</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h2>Operators</h2>
+                <div class="code-container">
+// Arithmetic operators<br>
+let x = 10;<br>
+let y = 3;<br>
+<br>
+let sum = x + y;<br>
+let difference = x - y;<br>
+let product = x * y;<br>
+let quotient = x / y;<br>
+let remainder = x % y;<br>
+<br>
+// Comparison operators<br>
+let isEqual = x === y;<br>
+let isGreater = x > y;<br>
+<br>
+// Output results<br>
+console.log("Sum: " + sum);<br>
+console.log("Is equal: " + isEqual);
+                </div>
+                <button class="btn" onclick="runOperators()">Run Example</button>
+                <div class="output" id="operators-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>JavaScript operators are used to assign values, compare values, perform arithmetic operations, and more.</p>
+                    <p>Arithmetic operators: +, -, *, /, %<br>
+                    Comparison operators: ==, ===, !=, !==, >, <, >=, <=</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h2>If Statement</h2>
+                <div class="code-container">
+let temperature = 25;<br>
+<br>
+if (temperature > 30) {<br>
+&nbsp;&nbsp;console.log("It's hot outside!");<br>
+} else if (temperature > 20) {<br>
+&nbsp;&nbsp;console.log("The weather is pleasant.");<br>
+} else {<br>
+&nbsp;&nbsp;console.log("It's cold outside!");<br>
+}<br>
+<br>
+console.log("Temperature is: " + temperature);
+                </div>
+                <button class="btn" onclick="runIfStatement()">Run Example</button>
+                <div class="output" id="if-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>Conditional statements are used to perform different actions based on different conditions.</p>
+                    <p>Use <code>if</code> to specify a block of code to be executed if a condition is true.</p>
+                    <p>Use <code>else</code> to specify a block of code to be executed if the condition is false.</p>
+                    <p>Use <code>else if</code> to specify a new condition to test if the first condition is false.</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h2>Switch Statement</h2>
+                <div class="code-container">
+let day = new Date().getDay();<br>
+let dayName;<br>
+<br>
+switch (day) {<br>
+&nbsp;&nbsp;case 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Sunday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Monday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Tuesday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Wednesday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 4:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Thursday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 5:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Friday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;case 6:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Saturday";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dayName = "Unknown";<br>
+}<br>
+<br>
+console.log("Today is: " + dayName);
+                </div>
+                <button class="btn" onclick="runSwitchStatement()">Run Example</button>
+                <div class="output" id="switch-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>The <code>switch</code> statement is used to perform different actions based on different conditions.</p>
+                    <p>It's often used as an alternative to an <code>if-else if-else</code> chain when you have many conditions to check.</p>
+                    <p>The <code>break</code> keyword breaks out of the switch block and stops the execution of more code inside the switch.</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h2>For Loop</h2>
+                <div class="code-container">
+// Simple for loop example<br>
+console.log("Counting from 1 to 5:");<br>
+<br>
+for (let i = 1; i <= 5; i++) {<br>
+&nbsp;&nbsp;console.log("Count: " + i);<br>
+}<br>
+<br>
+// Loop through an array<br>
+const fruits = ["Apple", "Banana", "Orange", "Mango"];<br>
+console.log("Fruits array:");<br>
+<br>
+for (let i = 0; i < fruits.length; i++) {<br>
+&nbsp;&nbsp;console.log("Fruit " + i + ": " + fruits[i]);<br>
+}
+                </div>
+                <button class="btn" onclick="runForLoop()">Run Example</button>
+                <div class="output" id="for-loop-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>Loops can execute a block of code a number of times. The <code>for</code> loop is the most common type of loop.</p>
+                    <p>Syntax: <code>for (initialization; condition; increment) { code }</code></p>
+                    <p>Loops are handy if you want to run the same code over and over again, each time with a different value.</p>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <h2>While Loop</h2>
+                <div class="code-container">
+// Simple while loop example<br>
+console.log("Counting down from 5:");<br>
+<br>
+let count = 5;<br>
+while (count > 0) {<br>
+&nbsp;&nbsp;console.log("Countdown: " + count);<br>
+&nbsp;&nbsp;count--;<br>
+}<br>
+<br>
+console.log("Liftoff!");<br>
+<br>
+// Do-while example<br>
+console.log("Do-while example:");<br>
+let i = 1;<br>
+do {<br>
+&nbsp;&nbsp;console.log("Number: " + i);<br>
+&nbsp;&nbsp;i++;<br>
+} while (i <= 3);
+                </div>
+                <button class="btn" onclick="runWhileLoop()">Run Example</button>
+                <div class="output" id="while-loop-output">Output will appear here</div>
+                <div class="explanation">
+                    <p>The <code>while</code> loop loops through a block of code as long as a specified condition is true.</p>
+                    <p>The <code>do-while</code> loop is a variant of the while loop that will execute the code block once, before checking if the condition is true.</p>
+                    <p>Be careful with while loops - they can run infinitely if the condition never becomes false!</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>JavaScript Fundamentals Demo &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Variables example
+        function runVariables() {
+            const output = document.getElementById('variables-output');
+            output.innerHTML = '';
+            
+            // Declaring variables
+            var message = "Hello, World!";
+            let count = 5;
+            const MAX_VALUE = 100;
+            
+            // Outputting variables
+            output.innerHTML += message + '<br>';
+            output.innerHTML += "Count: " + count + '<br>';
+            output.innerHTML += "Max value: " + MAX_VALUE;
+        }
+        
+        // Operators example
+        function runOperators() {
+            const output = document.getElementById('operators-output');
+            output.innerHTML = '';
+            
+            // Arithmetic operators
+            let x = 10;
+            let y = 3;
+            
+            let sum = x + y;
+            let difference = x - y;
+            let product = x * y;
+            let quotient = x / y;
+            let remainder = x % y;
+            
+            // Comparison operators
+            let isEqual = x === y;
+            let isGreater = x > y;
+            
+            // Output results
+            output.innerHTML += "Sum: " + sum + '<br>';
+            output.innerHTML += "Difference: " + difference + '<br>';
+            output.innerHTML += "Product: " + product + '<br>';
+            output.innerHTML += "Quotient: " + quotient.toFixed(2) + '<br>';
+            output.innerHTML += "Remainder: " + remainder + '<br>';
+            output.innerHTML += "Is equal: " + isEqual + '<br>';
+            output.innerHTML += "Is greater: " + isGreater;
+        }
+        
+        // If statement example
+        function runIfStatement() {
+            const output = document.getElementById('if-output');
+            output.innerHTML = '';
+            
+            let temperature = 25;
+            
+            if (temperature > 30) {
+                output.innerHTML += "It's hot outside!<br>";
+            } else if (temperature > 20) {
+                output.innerHTML += "The weather is pleasant.<br>";
+            } else {
+                output.innerHTML += "It's cold outside!<br>";
+            }
+            
+            output.innerHTML += "Temperature is: " + temperature;
+        }
+        
+        // Switch statement example
+        function runSwitchStatement() {
+            const output = document.getElementById('switch-output');
+            output.innerHTML = '';
+            
+            let day = new Date().getDay();
+            let dayName;
+            
+            switch (day) {
+                case 0:
+                    dayName = "Sunday";
+                    break;
+                case 1:
+                    dayName = "Monday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                case 6:
+                    dayName = "Saturday";
+                    break;
+                default:
+                    dayName = "Unknown";
+            }
+            
+            output.innerHTML += "Today is: " + dayName;
+        }
+        
+        // For loop example
+        function runForLoop() {
+            const output = document.getElementById('for-loop-output');
+            output.innerHTML = '';
+            
+            output.innerHTML += "Counting from 1 to 5:<br>";
+            
+            for (let i = 1; i <= 5; i++) {
+                output.innerHTML += "Count: " + i + "<br>";
+            }
+            
+            output.innerHTML += "<br>Fruits array:<br>";
+            const fruits = ["Apple", "Banana", "Orange", "Mango"];
+            
+            for (let i = 0; i < fruits.length; i++) {
+                output.innerHTML += "Fruit " + i + ": " + fruits[i] + "<br>";
+            }
+        }
+        
+        // While loop example
+        function runWhileLoop() {
+            const output = document.getElementById('while-loop-output');
+            output.innerHTML = '';
+            
+            output.innerHTML += "Counting down from 5:<br>";
+            
+            let count = 5;
+            while (count > 0) {
+                output.innerHTML += "Countdown: " + count + "<br>";
+                count--;
+            }
+            
+            output.innerHTML += "Liftoff!<br><br>";
+            
+            output.innerHTML += "Do-while example:<br>";
+            let i = 1;
+            do {
+                output.innerHTML += "Number: " + i + "<br>";
+                i++;
+            } while (i <= 3);
+        }
+    </script>
+</body>
+</html> 
